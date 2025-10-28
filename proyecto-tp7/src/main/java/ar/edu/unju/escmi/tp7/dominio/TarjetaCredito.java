@@ -3,25 +3,22 @@ package ar.edu.unju.escmi.tp7.dominio;
 import java.time.LocalDate;
 
 public class TarjetaCredito {
+	private long numero;
+	private LocalDate fechaCaducacion;
+	private Cliente cliente;
+	private double limiteCompra;
 
-	 private long numero;
-	 private LocalDate fechaCaducacion;
-	 private Cliente cliente;
-	 private double limiteCompra;
 
-	 public TarjetaCredito() {
-     }
+	public TarjetaCredito() {
 
-    
+	}
 
     public TarjetaCredito(long numero, LocalDate fechaCaducacion, Cliente cliente, double limiteCompra) {
-		super();
 		this.numero = numero;
 		this.fechaCaducacion = fechaCaducacion;
 		this.cliente = cliente;
 		this.limiteCompra = limiteCompra;
 	}
-
 
 
 	public long getNumero() {
@@ -32,13 +29,15 @@ public class TarjetaCredito {
         this.numero = numero;
     }
 
+
     public LocalDate getFechaCaducacion() {
         return fechaCaducacion;
     }
 
     public void setFechaCaducacion(LocalDate fechaCaducacion) {
-	       this.fechaCaducacion = fechaCaducacion;
+	    this.fechaCaducacion = fechaCaducacion;
 	}
+
 
 	public Cliente getCliente() {
 		return cliente;
@@ -46,6 +45,11 @@ public class TarjetaCredito {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+
+	public double getLimitCompra(){
+		return this.limiteCompra;
 	}
 
 	public void setLimiteCompra(double limiteCompra) {

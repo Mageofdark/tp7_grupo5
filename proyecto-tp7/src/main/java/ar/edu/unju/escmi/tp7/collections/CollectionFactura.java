@@ -21,6 +21,7 @@ public class CollectionFactura {
 		
 	}
 
+
 	public static Factura buscarFactura(long nroFactura) {
 		Factura facturaEncontrada = null;
 		
@@ -37,5 +38,21 @@ public class CollectionFactura {
 		}
 		
 		return facturaEncontrada;
+	}
+
+	
+	// Ver Compras realizadas por el cliente (ingresando el dni del cliente).
+	public static List<Factura> consultarCompras(long dni) {
+		List<Factura> shoppingList = new ArrayList<Factura>();
+		if (CollectionFactura.facturas != null) {
+			for (Factura fac : CollectionFactura.facturas) {
+				if (fac.getCliente().getDni() == dni) {
+					shoppingList.add(fac);
+				}
+			}
+		} else {
+			shoppingList = null;
+		}
+		return shoppingList;
 	}
 }

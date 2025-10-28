@@ -1,7 +1,6 @@
 package ar.edu.unju.escmi.tp7.dominio;
 
 public class Detalle {
-
 	private int cantidad;
     private double importe;
     private Producto producto;
@@ -17,6 +16,7 @@ public class Detalle {
         calcularImporte();
     }
 
+
     public int getCantidad() {
         return cantidad;
     }
@@ -24,6 +24,7 @@ public class Detalle {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
 
     public double getImporte() {
         return importe;
@@ -33,6 +34,7 @@ public class Detalle {
         this.importe = importe;
     }
 
+
     public Producto getProducto() {
         return producto;
     }
@@ -40,6 +42,7 @@ public class Detalle {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
 
     private void calcularImporte() {
         this.setImporte(this.cantidad * this.producto.getPrecioUnitario());
