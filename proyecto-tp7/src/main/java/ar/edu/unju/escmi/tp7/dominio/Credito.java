@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Credito {
-
 	private TarjetaCredito tarjetaCredito;
 	private Factura factura;
 	private List<Cuota> cuotas = new ArrayList<Cuota>();
@@ -24,6 +23,7 @@ public class Credito {
 		this.cuotas = cuotas;
 	}
 
+
 	public TarjetaCredito getTarjetaCredito() {
 		return tarjetaCredito;
 	}
@@ -31,6 +31,7 @@ public class Credito {
 	public void setTarjetaCredito(TarjetaCredito tarjetaCredito) {
 		this.tarjetaCredito = tarjetaCredito;
 	}
+
 
 	public Factura getFactura() {
 		return factura;
@@ -40,6 +41,7 @@ public class Credito {
 		this.factura = factura;
 	}
 
+
 	public List<Cuota> getCuotas() {
 		return cuotas;
 	}
@@ -47,6 +49,7 @@ public class Credito {
 	public void setCuotas(List<Cuota> cuotas) {
 		this.cuotas = cuotas;
 	}
+	
 	
 	public void generarCuotas() {
 		double montoCuota = this.factura.calcularTotal() / 30;

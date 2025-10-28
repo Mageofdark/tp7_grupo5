@@ -1,16 +1,18 @@
 package ar.edu.unju.escmi.tp7.dominio;
 
 public class Stock {
-	 private int cantidad;
-	 private Producto producto;
+	private int cantidad;
+	private Producto producto;
 
-	 public Stock() {
-     }
+	public Stock() {
+
+    }
 
     public Stock(int cantidad, Producto producto) {
         this.cantidad = cantidad;
         this.producto = producto;
     }
+
 
     public int getCantidad() {
         return cantidad;
@@ -20,6 +22,7 @@ public class Stock {
         this.cantidad = cantidad;
     }
 
+    
     public Producto getProducto() {
         return producto;
     }

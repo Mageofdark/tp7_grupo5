@@ -6,7 +6,6 @@ import java.util.List;
 
 
 public class Factura {
-
 	private LocalDate fecha;
     private long nroFactura;
     private Cliente cliente;
@@ -24,6 +23,7 @@ public class Factura {
         calcularTotal();
     }
 
+
     public LocalDate getFecha() {
         return fecha;
     }
@@ -31,6 +31,7 @@ public class Factura {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+
 
     public long getNroFactura() {
         return nroFactura;
@@ -40,6 +41,7 @@ public class Factura {
         this.nroFactura = nroFactura;
     }
 
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -47,6 +49,7 @@ public class Factura {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
 
     public List<Detalle> getDetalles() {
         return detalles;
@@ -56,6 +59,7 @@ public class Factura {
         this.detalles = detalles;
     }
 
+    
     public double calcularTotal() {
         double total = 0;
         for (Detalle detalle : detalles) {
