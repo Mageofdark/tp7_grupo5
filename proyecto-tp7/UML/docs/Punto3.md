@@ -16,7 +16,7 @@ La relacion entre las clases Factura y Cliente se llama `asociacion`.
 Los atributos de las clases collection son publicos para simplificar el acceso o manipulacion desde otras clases (como agregar, buscar o listar elementos).
 
 ### f) Describa las características de todos los métodos de la clase CollectionClientes.
-+agregarCliente(in cliente: Cliente) :
+#### +agregarCliente(in cliente: Cliente) :
 Recibe una objeto de tipo cliente como parametro.
 Su objetivo es agregar el cliente a la collection.
 No devuelve ningun valor.
