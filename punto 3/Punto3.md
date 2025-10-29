@@ -18,15 +18,23 @@ Los atributos de las clases collection son publicos para simplificar el acceso o
 ### f) Describa las características de todos los métodos de la clase CollectionClientes.
 #### +agregarCliente(in cliente: Cliente) :
 Recibe una objeto de tipo cliente como parametro.
+
 Su objetivo es agregar el cliente a la collection.
+
 No devuelve ningun valor.
 
-+buscarPorDNI (in dni: long) : Cliente :
+
+#### +buscarPorDNI (in dni: long) : Cliente :
 Recibe una valor de tipo long.
+
 Su objetivo de buscar un cliente en la collection segun su DNI.
+
 Devuelve una objeto de tipo Cliente.
 
-+precargarClientes() :
+
+#### +precargarClientes() :
 No recibe ningun parametro.
+
 Su funcion es solo precargar la collection con una lista de clientes predefinida (esto solo ocurre al iniciar el proyecto).
+
 No devuelve nada.
