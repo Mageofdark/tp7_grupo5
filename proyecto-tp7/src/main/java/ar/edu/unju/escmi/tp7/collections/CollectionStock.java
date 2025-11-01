@@ -77,6 +77,7 @@ public class CollectionStock {
 		}
 	}
 
+	
 	public static Stock buscarStock(Producto producto) {
 		Stock stockTotal = null;
 		
@@ -93,5 +94,11 @@ public class CollectionStock {
 		}
 		
 		return stockTotal;
+	}
+
+
+	//Funcion para consultar el stock de los procuctos
+	public static List<Stock> consultarStock() {
+		return stocks;
 	}
 }
