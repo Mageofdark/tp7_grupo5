@@ -3,12 +3,16 @@ package ar.edu.unju.escmi.tp7.main;
 import java.util.Collection;
 import java.util.Scanner;
 
+import javax.xml.stream.FactoryConfigurationError;
+
 import ar.edu.unju.escmi.tp7.collections.CollectionCliente;
 import ar.edu.unju.escmi.tp7.collections.CollectionProducto;
 import ar.edu.unju.escmi.tp7.collections.CollectionStock;
 import ar.edu.unju.escmi.tp7.collections.CollectionTarjetaCredito;
+import ar.edu.unju.escmi.tp7.dominio.Factura;
 import ar.edu.unju.escmi.tp7.dominio.Producto;
 import ar.edu.unju.escmi.tp7.collections.CollectionFactura;
+import ar.edu.unju.escmi.tp7.dominio.Cliente;
 
 public class Main {
 	
@@ -32,77 +36,80 @@ public class Main {
 
             System.out.println("Ingrese su opcion: ");
 
-            opcion = scanner.nextInt();
+            String opcionStr = scanner.nextLine().trim();
+            opcion = Integer.parseInt(opcionStr); // validación con try/catch si querés
 
             switch (opcion) {
                 case 1:
-                    /*System.out.println("Ingrese DNI del cliente");
-                    String dniInput = scanner.nextLine().trim();
-                    long dni;
+                    System.out.print("Ingrese DNI del cliente: ");
+                    String input = scanner.nextLine().trim();
 
-                    try {
-                        dni = Long.parseLong(dniInput);
-                    } catch (NumberFormatException e) {
-                        System.out.println("DNI invalido. Por favor, ingrese un numero valido.");
+                        if (input.isEmpty()) {
+                            System.out.println("✘ No ingresó ningún valor.");
                         break;
-                    }
-
-                    Cliente cliente = CollectionCliente.buscarCliente(dni);
-                    if (cliente == null) {
-                        System.out.println("Cliente no encontrado. Por favor, registre al cliente antes de realizar una venta.");
-                        break;
-                    }
-                    
-                    System.out.println("Cliente encontrado: " + cliente.getNombre());
-                    System.out.println("Ingrese el codigo del producto a vender:");
-                    String codigo = scanner.nextLine().trim();
-
-                    if (codigo.isEmpty()) {
-                        System.out.println("Codigo de producto invalido. Por favor, intente de nuevo.");
-                        break;
-                    }
-
-                    Producto productoSeleccionado = null;
-                    for (Producto producto : CollectionProducto.productos) {
-                        if (producto.Codigo().equalsIgnoreCase(codigo)) {
-                            productoSeleccionado = producto;
-                            break;
                         }
-                    }
 
-                    if (productoSeleccionado == null) {
-                        System.out.println("Producto no encontrado. Por favor, verifique el codigo e intente de nuevo.");
+                                long dni;
+                            try {
+                                dni = Long.parseLong(input);
+                            } catch (NumberFormatException e) {
+                                System.out.println("✘ DNI inválido. Debe ser numérico.");
+                                break;
+                            }
+
+                            Cliente cliente = CollectionCliente.buscarCliente(dni);
+                            if (cliente == null) {
+                                System.out.println("✘ Cliente no encontrado. Regístrelo primero.");
+                                break;
+                            }
+
+                    System.out.print("Ingrese código del producto: ");
+                    Long codigo = Long.parseLong(scanner.nextLine().trim());
+                    Producto producto = CollectionProducto.buscarProducto(codigo);
+                
+                    if (producto == null) {
+                        System.out.println("❌ Producto no encontrado.");
                         break;
                     }
-
-                    System.out.println("Producto seleccionado: " + productoSeleccionado.getDescripcion());
-                    System.out.println("Ingrese la cantidad que desea vender:");
+                
+                    System.out.print("Ingrese cantidad a comprar: ");
                     int cantidad;
-
                     try {
                         cantidad = Integer.parseInt(scanner.nextLine().trim());
                         if (cantidad <= 0) {
-                            System.out.println("La cantidad debe ser mayor a cero.");
+                            System.out.println("❌ La cantidad debe ser mayor a cero.");
                             break;
                         }
                     } catch (NumberFormatException e) {
-                        System.out.println("Cantidad invalida.");
+                        System.out.println("❌ Cantidad inválida.");
                         break;
                     }
+                
+                    if (producto.getStock() < cantidad) {
+                        System.out.println("❌ Stock insuficiente. Disponible: " + producto.getStock());
+                        break;
+                    }
+                
+                    // Descontar stock
+                    CollectionStock.reducirStock(null, cantidad);
+                
+                    // Crear y factura
+                    Factura factura = new Factura();
+                    CollectionFactura.agregarFactura(factura);
 
-                    if (productoSeleccionado.getStock() < cantidad) {
-                        System.out.println("Stock insuficiente para el producto seleccionado.");
-                        break;
-                    }
-                    
-                    Venta venta = new Venta(cliente, productoSeleccionado, cantidad);*/
+                
+                    System.out.println("✅ Venta realizada con éxito.");
+                    System.out.println("Factura generada:");
+                    System.out.println(factura);
+                    break;
+                
                 case 2:
                     System.out.println("Revisar compras realizadas por el cliente.");
                     System.out.println("Ingrese DNI del cliente:");
-                    long dni = scanner.nextLong();
+                    dni = scanner.nextLong();
                     boolean encontrado = false;
-                    for (var factura : CollectionFactura.consultarCompras(dni)) {
-                        System.out.println(factura);
+                    for (var fact : CollectionFactura.consultarCompras(dni)) {
+                        System.out.println(fact);
                         encontrado = true;
                     }
                     if (!encontrado) {
@@ -110,10 +117,12 @@ public class Main {
                     }
 
                     break;
+
+
                 case 3:
                     System.out.println("====== Productos Disponibles ======");
-                    for (var producto : CollectionProducto.productos) {
-                        System.out.println(producto);
+                    for (var prod : CollectionProducto.productos) {
+                        System.out.println(prod);
                     }
                     break;
                 case 4:
@@ -136,7 +145,7 @@ public class Main {
                     if (!encontradoCredito) {
                         System.out.println("No se encontraron creditos para el cliente con DNI: " + dni);
                     }
-                    //CollectionCliente.revisarCreditosCliente();
+
                     break;
                 case 6:
                     System.out.println("Saliendo del programa...");

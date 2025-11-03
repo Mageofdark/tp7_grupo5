@@ -1,5 +1,7 @@
 package ar.edu.unju.escmi.tp7.dominio;
 
+import ar.edu.unju.escmi.tp7.collections.CollectionStock;
+
 public class Producto {
 	private long codigo;
     private String descripcion;
@@ -52,6 +54,15 @@ public class Producto {
 
     public void setOrigenFabricacion(String origenFabricacion) {
         this.origenFabricacion = origenFabricacion;
+    }
+
+    //obtener el stock del producto
+    public int getStock() {
+        Stock stock = CollectionStock.buscarStock(this);
+        if (stock != null) {
+            return stock.getCantidad();
+        }
+        return 0; // Si no se encuentra el stock, se asume que es 0
     }
 
     
