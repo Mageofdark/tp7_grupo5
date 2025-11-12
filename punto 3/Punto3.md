@@ -10,7 +10,7 @@ La clase Factura tiene 2 atributos: `fecha` y `nroFactura`.
 La relacion entre las clases Factura y Detalle se llama `composicion`.
 
 ### d) ¿Cómo se llama la relación entre las clases Factura y Cliente?
-La relacion entre las clases Factura y Cliente se llama `asociacion`.
+La relacion entre las clases Factura y Cliente se llama `agregacion`.
 
 ### e) ¿Por qué los atributos de las clases Collections son públicos?
 Los atributos de las clases collection son publicos para simplificar el acceso o manipulacion desde otras clases (como agregar, buscar o listar elementos).
@@ -26,7 +26,7 @@ Su objetivo es agregar el cliente a la collection.
 No devuelve ningun valor.
 
 
-#### +buscarPorDNI (in dni: long) : Cliente :
+#### +buscarCliente (in dni: long) : Cliente :
 Es un metodo publico y estatico.
 
 Recibe una valor de tipo long.
