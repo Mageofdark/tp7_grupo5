@@ -30,4 +30,12 @@ public class Stock {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    public void reducirStock(int cantidadVendida) {
+        if (cantidadVendida > 0 && cantidadVendida <= this.cantidad) {
+            this.cantidad -= cantidadVendida;
+        } else {
+            System.out.println("Error: cantidad inválida para reducir el stock.");
+        }
+    }
 }
