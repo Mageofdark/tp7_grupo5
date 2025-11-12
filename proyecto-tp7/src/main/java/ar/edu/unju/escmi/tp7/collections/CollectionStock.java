@@ -65,17 +65,20 @@ public class CollectionStock {
 		
 	}
 
-	public static void reducirStock(Stock stock, int cantidad) {
-		int i = stocks.indexOf(stock);
-		if (i >= 0) {
-			if (stock.getCantidad() - cantidad >= 0) {
-				stock.setCantidad(stock.getCantidad() - cantidad);
-				stocks.set(i, stock);
-			}
-		} else {
-			System.out.println("\nERROR");
-		}
-	}
+	
+	public static boolean reducirStock(Stock stock, int cantidad) {
+    if (stock != null && cantidad > 0) {
+        if (stock.getCantidad() >= cantidad) {
+            stock.setCantidad(stock.getCantidad() - cantidad);
+            return true; // operación exitosa
+        } else {
+            System.out.println("❌ Stock insuficiente. Disponible: " + stock.getCantidad());
+        }
+    } else {
+        System.out.println("❌ Parámetros inválidos.");
+    }
+    return false; // no se pudo reducir
+}
 
 	
 	public static Stock buscarStock(Producto producto) {
