@@ -15,7 +15,6 @@ private Producto producto;
     private List<Detalle> detalles;
     private Factura factura;
     private TarjetaCredito tarjeta;
-    private Credito credito;
 
     @BeforeEach
     public void setUp() {
@@ -25,7 +24,6 @@ private Producto producto;
         detalles.add(detalle);
         factura = new Factura(LocalDate.now(), 100, null, detalles);
         tarjeta = new TarjetaCredito(123456789L, LocalDate.now().plusYears(2), null, 1200000);
-        credito = new Credito(tarjeta, factura, new ArrayList<>());
     }
 
     @Test
