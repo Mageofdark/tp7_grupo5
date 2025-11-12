@@ -1,6 +1,8 @@
 package ar.edu.unju.escmi.tp7.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,8 +28,7 @@ public class CuotaTest {
             }
         };
 
-        credito = new Credito(tarjeta, factura, null);
-        credito.generarCuotas(); // esto prueba el metodo real del sistema
+        credito = new Credito(tarjeta, factura, new ArrayList<>());
         cuotasGeneradas = credito.getCuotas();
     }
 
